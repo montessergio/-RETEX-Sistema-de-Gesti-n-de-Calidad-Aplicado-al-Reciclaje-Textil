@@ -1,81 +1,158 @@
-📦 RETEX — Sistema de Gestión de Calidad Aplicado al Reciclaje Textil
+# RETEX · Quality Management System — Textile Recycling Operations
 
-Proyecto académico desarrollado como caso de estudio para la asignatura de Sistemas de Gestión de Calidad
-Ingeniería Industrial · 5.º cuatrimestre · 2024
+> **Stack:** Excel · Power BI · DAX · Statistical Process Control  
+> **Domain:** Quality Engineering · Industrial Statistics · Cost Analysis  
+> **Deliverables:** Relational data model · Interactive dashboard · Technical report  
 
+---
 
-📋 Descripción del proyecto
-RETEX es una empresa ficticia de reciclaje textil utilizada como caso de estudio para aplicar de manera integral los fundamentos teóricos y las herramientas prácticas de la gestión de calidad en un entorno de manufactura.
-El proyecto aplica la Trilogía de Juran (Planeación, Control y Mejora de la Calidad) como marco metodológico central, desarrollando un sistema completo que abarca desde la identificación de clientes y necesidades hasta el análisis financiero del costo de la no calidad y la propuesta de mejora tecnológica mediante espectroscopía NIR.
-Problemática abordada
-RETEX enfrenta una brecha de calidad en la pureza de la fibra reciclada clasificada. La inconsistencia en los niveles de pureza genera rechazos por parte de las hilanderías clientes, incrementa los costos operativos por reclasificación y afecta la competitividad de la empresa en el mercado de la moda sostenible.
-Objetivos del proyecto
+## Overview
 
-Diseñar un sistema de planeación de la calidad basado en la identificación sistemática de clientes, necesidades y características de calidad medibles.
-Implementar herramientas de Control Estadístico de Procesos (SPC) para monitorear la estabilidad y capacidad del proceso de clasificación.
-Definir un conjunto de KPIs alineados con las etapas operativas del proceso y los objetivos de calidad establecidos.
-Cuantificar el Costo de la No Calidad (CONC) y evaluar el retorno de la inversión en la implementación de tecnología NIR como mejora de innovación.
+End-to-end quality management system designed for a textile recycling operation, built on **Juran's Quality Trilogy** as the methodological framework. The project covers the full quality lifecycle: from customer needs translation and process characterization, through statistical monitoring with SPC charts and capability indices, to financial justification of a process innovation via ROI analysis.
 
+The system was developed entirely from scratch — data modeling, statistical calculations, DAX measures, and dashboard design — with no pre-built templates.
 
-🔍 Contenido del repositorio
-El proyecto se compone de tres entregables principales:
-1. Retex.pdf — Reporte Técnico
-Documento académico que desarrolla en profundidad:
+---
 
-Planeación de la calidad con identificación de clientes internos y externos, necesidades explícitas y latentes, y traducción a características de calidad medibles con métricas y frecuencias definidas.
-Análisis de estabilidad del proceso mediante gráficos de control tipo p (fracción defectuosa de pureza) y X̄-R (media y rango del peso de pacas).
-Análisis de capacidad de proceso con cálculo e interpretación de los índices Cp y Cpk.
-Definición de 6 KPIs operativos con umbrales de alerta, responsables y justificación técnica.
-Análisis del Costo de la No Calidad con desglose por categorías (fallas internas, fallas externas, inspección y prevención) y propuesta de mejora mediante sensor NIR con cálculo de ROI superior al 70% en el primer año.
+## Problem statement
 
-2. Retex.xlsx — Base de Datos y Modelos de Cálculo
-Archivo de Excel estructurado con modelo de datos relacional compuesto por 6 tablas normalizadas:
-Tabla Contenido Filas Lotes Catálogo de 52 lotes semanales con tipo de fibra, turno y operador52Mediciones_Pureza5 mediciones de pureza por lote con cálculo acumulado de Cp y Cpk260Peso_Pacas20 subgrupos de 5 pacas con límites de control X̄-R calculados100KPIs_DiariosRegistro semanal de 6 KPIs con semáforo de alerta automático312Costos_CONCDesglose mensual del CONC por categoría con ahorro potencial NIR 48 Operadores Catálogo de 6 operadores con promedio de pureza y evaluación
-Incluye hoja de Resumen ejecutivo con fórmulas dinámicas que consolidan los indicadores clave de todas las tablas.
-3. Retex .pbix — Dashboard Interactivo en Power BI
-Dashboard profesional de 3 páginas con modelo de datos, relaciones entre tablas y medidas DAX:
-Página 1 — Resumen Ejecutivo
-Panorama general del sistema con 6 tarjetas KPI, gráfico de pureza por semana con línea de especificación mínima, gráfico de alertas por KPI y segmentador por mes.
-<img width="1375" height="775" alt="image" src="https://github.com/user-attachments/assets/eca9b234-1bec-4803-b9c6-48b0ae771076" />
-Página 2 — Control del Proceso
-Gráficos de control X̄ y R con límites de control calculados, tarjetas de capacidad (Cp, Cpk, Sigma), tabla de señales por subgrupo y filtros por turno y operador.
-<img width="1376" height="778" alt="image" src="https://github.com/user-attachments/assets/f0715f80-a2ce-43a9-a7f0-c300c1e9cdf9" />
-Página 3 — CONC y ROI
-Gráfico de CONC mensual apilado por categoría, tendencia acumulada anual, tarjetas de ahorro potencial y ROI proyectado, y simulador interactivo what-if con slider para modelar diferentes escenarios de reducción de errores con el sensor NIR.
-<img width="1379" height="778" alt="image" src="https://github.com/user-attachments/assets/2f033325-56c1-4005-8803-4a65ae090390" />
-🛠️ Tecnologías utilizadas
-Herramienta Versión Uso en el proyecto Microsoft Excel 2021 / Microsoft 365 Estructuración de datos, fórmulas de SPC, cálculo de Cp/Cpk, KPIs y CONC Power BI Desktop 2024 Modelo de datos relacional, medidas DAX, visualizaciones y dashboard interactivo DAX (Data Analysis Expressions)—Medidas de capacidad de proceso, análisis de alertas, simulación what-if de ROI
-Funciones y conceptos clave aplicados
-Excel:
+The core operational issue: **inconsistent fiber purity in classified bales**, causing downstream rejections from spinning mills and driving up reclassification costs. Quantifying this gap and proposing a data-backed improvement path is the central thread of the project.
 
-DISTR.NORM.INV para generación de datos simulados con distribución normal
-DESVEST.P para cálculo de sigma poblacional
-PROMEDIO.SI.CONJUNTO para análisis cruzado entre tablas
-INDICE + COINCIDIR para búsquedas relacionales entre hojas
-Tablas estructuradas con relaciones por ID_Lote
-Formato condicional con semáforos automáticos
+---
 
-Power BI / DAX:
+## What's in this repository
 
-CALCULATE + FILTER + ALL para medidas con contexto controlado
-STDEVX.P para sigma del proceso en tiempo real
-SWITCH(TRUE()) para clasificación dinámica del estado del proceso
-SELECTEDVALUE para integración con parámetros what-if
-DIVIDE con manejo de errores para cálculo de ROI
-Parámetro de intervalo numérico para simulación interactiva
+### `Retex.xlsx` — Relational Data Model & Statistical Engine
 
+Six normalized tables structured as a relational model with `ID_Lote` as the primary key across tables:
 
-📚 Marco teórico de referencia
+| Table | Content | Rows |
+|---|---|---|
+| `Lotes` | 52-week lot catalog with fiber type, shift, and operator | 52 |
+| `Mediciones_Pureza` | 5 purity readings per lot with running Cp/Cpk | 260 |
+| `Peso_Pacas` | 20 subgroups of 5 bales for X̄-R control charts | 100 |
+| `KPIs_Diarios` | Weekly tracking of 6 KPIs with automatic alert flags | 312 |
+| `Costos_CONC` | Monthly cost of poor quality by category with NIR savings projection | 48 |
+| `Operadores` | 6-operator catalog with individual purity averages and performance rating | 6 |
 
-Trilogía de Juran: Juran, J. M., & Godfrey, A. B. (1999). Juran's Quality Handbook. McGraw-Hill.
-Control Estadístico de Procesos: Montgomery, D. C. (2019). Introduction to Statistical Quality Control. Wiley.
-Sistema de gestión de calidad: ISO 9001:2015. Sistemas de gestión de la calidad — Requisitos.
+**Key Excel techniques applied:**
 
+- `DISTR.NORM.INV` for generating normally distributed simulation data
+- `DESVEST.P` for population sigma calculation across lots
+- `PROMEDIO.SI.CONJUNTO` for cross-table conditional analysis
+- `INDICE + COINCIDIR` for relational lookups between sheets
+- Structured tables with explicit relationships by `ID_Lote`
+- Conditional formatting with automatic traffic-light alerts per KPI threshold
 
-👤 Autor
-Sergio Montes Cruz
-Estudiante de Ingeniería Industrial · 5.º cuatrimestre
-Asignatura: Sistemas de Gestión de Calidad · 2024
+---
 
+### `Retex.pbix` — Power BI Dashboard (3-page interactive report)
 
-Este proyecto fue desarrollado con fines académicos utilizando datos simulados para la empresa ficticia RETEX. Los valores numéricos son representativos y han sido generados mediante distribuciones estadísticas para reflejar el comportamiento real de un proceso de reciclaje textil.
+Fully relational data model inside Power BI with custom DAX measures. No auto-generated visuals — every chart was configured with explicit data roles, formatting, and interaction logic.
+
+**Page 1 — Executive Summary**
+<img width="1380" height="774" alt="image" src="https://github.com/user-attachments/assets/86a2edac-765f-41aa-861a-29397d24cb2a" />
+
+6 KPI cards, weekly purity trend line with minimum specification boundary, alert frequency chart, month slicer.
+
+**Page 2 — Process Control**
+<img width="1382" height="780" alt="image" src="https://github.com/user-attachments/assets/a9f75873-8194-4c67-a41d-2123d860d326" />
+
+X̄ and R control charts with dynamically calculated control limits, process capability cards (Cp, Cpk, process sigma), out-of-control signal table, filters by shift and operator.
+
+**Page 3 — Cost of Poor Quality & ROI**
+<img width="1380" height="774" alt="image" src="https://github.com/user-attachments/assets/0921a47b-a41c-4475-9c39-968b316079b5" />
+
+Stacked CONC chart by category and month, cumulative annual trend, savings and projected ROI cards, and an interactive **what-if simulator** with a numeric range parameter to model different error-reduction scenarios under NIR implementation.
+
+**DAX measures written from scratch:**
+
+```dax
+-- Process capability index (real-time, context-aware)
+Cpk = 
+VAR mu = AVERAGE(Mediciones_Pureza[Pureza])
+VAR sigma = STDEVX.P(Mediciones_Pureza, Mediciones_Pureza[Pureza])
+VAR cpu = DIVIDE(100 - mu, 3 * sigma)
+VAR cpl = DIVIDE(mu - 96, 3 * sigma)
+RETURN MIN(cpu, cpl)
+
+-- Dynamic process state classification
+Estado_Proceso = 
+SWITCH(
+    TRUE(),
+    [Cpk] >= 1.33, "CAPAZ",
+    [Cpk] >= 1.0,  "ACEPTABLE",
+    [Cpk] < 1.0,   "NO CAPAZ"
+)
+
+-- What-if ROI simulation
+ROI_Simulado = 
+VAR reduccion = SELECTEDVALUE('Parametro NIR'[Parametro NIR Value]) / 100
+VAR ahorro_fallas_int = 15000 * reduccion
+VAR ahorro_fallas_ext = 10000 * (reduccion * 0.9)
+VAR inversion = 15000
+RETURN DIVIDE(ahorro_fallas_int + ahorro_fallas_ext + 5000 - inversion, inversion)
+```
+
+---
+
+### `Retex.pdf` — Technical Report
+
+Structured analytical document covering:
+
+- **Quality Planning:** customer segmentation (external/internal), explicit and latent needs matrix, translation of needs to measurable quality characteristics with metrics and frequencies
+- **SPC Analysis:** p-chart for defective fraction (fiber purity), X̄-R chart for bale weight — with control limit calculations, stability interpretation, and signal identification
+- **Process Capability:** Cp = 1.33, Cpk = 1.20 — process is capable and slightly off-center toward the upper spec (higher purity), interpreted with operational implications
+- **KPI Framework:** 6 indicators with alert thresholds, responsible roles, measurement frequency, and technical justification per threshold
+- **Cost of Poor Quality (COPQ):** $40,000 USD annual baseline broken down by failure category; NIR implementation projected to deliver **73.3% ROI in year 1**
+
+---
+
+## Statistical methods applied
+
+| Method | Application |
+|---|---|
+| p-chart (attribute SPC) | Weekly defective fraction monitoring for fiber purity |
+| X̄-R chart (variable SPC) | Bale weight stability across subgroups of n=5 |
+| Cp / Cpk indices | Process capability against bilateral specification (96%–100%) |
+| Normal distribution simulation | Synthetic dataset generation with realistic process variation |
+| Ishikawa (cause-effect) | Root cause structure for classification error |
+| COPQ model | Four-category cost breakdown: internal failures, external failures, appraisal, prevention |
+| ROI analysis | First-year return on NIR sensor investment with what-if sensitivity |
+
+---
+
+## Key results
+
+| Metric | Value | Interpretation |
+|---|---|---|
+| Process stability (p-chart) | ✅ Stable | All points within 3σ limits, no special causes detected |
+| Process stability (X̄-R) | ✅ Stable | Mean and range under control across 20 subgroups |
+| Cp (purity) | 1.33 | Adequate potential capacity |
+| Cpk (purity) | 1.20 | Capable; slight positive shift — process runs at higher purity than nominal |
+| Annual COPQ | $40,000 USD | Dominated by internal failures (reclassification) and lost clients |
+| NIR investment | $15,000 USD | — |
+| Projected annual savings | $26,000 USD | 80% reduction in internal failures + 90% in returns |
+| First-year ROI | **73.3%** | Payback within 7 months |
+
+---
+
+## Repository structure
+
+```
+retex-quality-system/
+├── Retex.xlsx          # Relational data model, SPC engine, KPI tracker
+├── Retex.pbix          # Power BI dashboard (3 pages, DAX measures, what-if)
+├── Retex.pdf           # Full technical report
+└── README.md
+```
+
+---
+
+## Author
+
+**Sergio Montes Cruz**  
+Quality & Process Engineer — Manufacturing / Railway sector  
+Industrial Engineering · MOVAPE / UNICEP  
+
+Field experience: dimensional inspection, NDT (RT, MT, PT, BT — Level 2), ISO 9001 / IRIS quality systems, 8D problem solving, process documentation.
